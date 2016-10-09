@@ -58,15 +58,15 @@
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _Home = __webpack_require__(236);
+	var _Home = __webpack_require__(237);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _About = __webpack_require__(237);
+	var _About = __webpack_require__(238);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Contact = __webpack_require__(238);
+	var _Contact = __webpack_require__(239);
 
 	var _Contact2 = _interopRequireDefault(_Contact);
 
@@ -76,7 +76,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
-	    { history: _reactRouter.hashHistory },
+	    { history: _reactRouter.browserHistory },
 	    _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _Layout2.default },
@@ -21462,6 +21462,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21469,7 +21470,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(173);
+	var _Dropdown = __webpack_require__(236);
+
+	var _Dropdown2 = _interopRequireDefault(_Dropdown);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21494,21 +21497,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/', onlyActiveOnIndex: true },
-	                    'Home'
-	                ),
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/about' },
-	                    'About'
-	                ),
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/contact' },
-	                    'Contact'
-	                ),
+	                _react2.default.createElement(_Dropdown2.default, null),
 	                this.props.children
 	            );
 	        }
@@ -27180,6 +27169,140 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Dropdown = function (_React$Component) {
+	    _inherits(Dropdown, _React$Component);
+
+	    function Dropdown(props) {
+	        _classCallCheck(this, Dropdown);
+
+	        var _this = _possibleConstructorReturn(this, (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, props));
+
+	        _this.state = {
+	            hover: false
+	        };
+
+	        _this.mouseEnter = _this.mouseEnter.bind(_this);
+	        _this.mouseLeave = _this.mouseLeave.bind(_this);
+
+	        return _this;
+	    }
+
+	    _createClass(Dropdown, [{
+	        key: 'mouseEnter',
+	        value: function mouseEnter() {
+	            this.setState({ hover: true });
+	        }
+	    }, {
+	        key: 'mouseLeave',
+	        value: function mouseLeave() {
+	            this.setState({ hover: false });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'span',
+	                { onMouseEnter: this.mouseEnter, onMouseLeave: this.mouseLeave, style: this._getStyles().dropdown },
+	                _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'Dropdown'
+	                ),
+	                _react2.default.createElement(
+	                    'span',
+	                    { style: this._getDropdownStyles() },
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/', onlyActiveOnIndex: true },
+	                            'Home'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/about' },
+	                            'About'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/contact' },
+	                            'Contact'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: '_getStyles',
+	        value: function _getStyles() {
+
+	            return {
+	                dropdown: {
+	                    position: 'relative',
+	                    display: 'inlineBlock'
+
+	                },
+
+	                dropdownContent: {
+	                    display: 'none',
+	                    position: 'absolute',
+	                    backgroundColor: '#f9f9f9',
+	                    minWidth: '160px',
+	                    boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+	                    padding: '12px 16px'
+	                }
+	            };
+	        }
+	    }, {
+	        key: '_getDropdownStyles',
+	        value: function _getDropdownStyles() {
+
+	            return this.state.hover ? Object.assign({}, this._getStyles().dropdownContent, { display: 'block' }) : Object.assign({}, this._getStyles().dropdownContent);
+	        }
+	    }]);
+
+	    return Dropdown;
+	}(_react2.default.Component);
+
+	exports.default = Dropdown;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27225,7 +27348,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27233,6 +27356,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27278,7 +27402,7 @@
 	exports.default = About;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27286,6 +27410,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
